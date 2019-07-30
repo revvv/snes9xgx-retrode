@@ -246,8 +246,6 @@ static u8 bMaxPacketSizeRetrode = 0;
 // store previous button state for the SNES Retrode ports
 static u32 jpRetrode[4];
 
-static int count = 0;
-
 void closeUSB(s32 *fd)
 {
 	s32 res = USB_CloseDevice(fd);
@@ -342,11 +340,11 @@ UpdatePads()
 	#endif
 
 	// Retrode
-		if(!retrodeConnected)
-		{
-			openRetrode();
-			retrodeConnected = true;
-		}
+	if(!retrodeConnected)
+	{
+		openRetrode();
+		retrodeConnected = true;
+	}
 	//	else
 	//	{
 	//		u16 buttonsHeld = WPAD_ButtonsHeld(0);
