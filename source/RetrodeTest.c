@@ -663,7 +663,7 @@ void closeUSB_Gamepads()
 	}
 }
 
-int main() {
+int main1() {
 	Initialise();
 	//IOS_ReloadIOS(58);
 	//usleep(100 * 1000);
