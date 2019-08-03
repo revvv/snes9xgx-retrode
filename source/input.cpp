@@ -239,7 +239,7 @@ void ResetControls(int consoleCtrl, int wiiCtrl)
  ***************************************************************************/
 
 #ifdef HW_RVL
-static bool retrodeConnected = false;
+static bool retrodeSetup = false;
 static s32 deviceIdRetrode = 0;
 static u8 endpointRetrode = 0;
 static u8 bMaxPacketSizeRetrode = 0;
@@ -342,10 +342,10 @@ UpdatePads()
 	#endif
 
 	#ifdef HW_RVL
-	if(!retrodeConnected)
+	if(!retrodeSetup)
 	{
 		openRetrode();
-		retrodeConnected = true;
+		retrodeSetup = true;
 	}
 	#endif
 
@@ -549,7 +549,7 @@ static void decodepad (int chan)
 
 #ifdef HW_RVL
 	// Retrode
-	if (retrodeConnected && chan == 0)
+	if (deviceIdRetrode != 0 && chan == 0)
 	{
 	    uint8_t ATTRIBUTE_ALIGN(32) buf[bMaxPacketSizeRetrode];
 		int res = USB_ReadIntrMsg(deviceIdRetrode, endpointRetrode, sizeof(buf), buf);
@@ -585,7 +585,7 @@ static void decodepad (int chan)
 			jpRetrode[buf[0] - 1] = jp12;
 		}
 	}
-	if (retrodeConnected && chan >= 0 && chan <= 3)
+	if (deviceIdRetrode != 0 && chan >= 0 && chan <= 3)
 	{
 		jp |= jpRetrode[chan]; // restore previous value
 	}
