@@ -238,6 +238,7 @@ void ResetControls(int consoleCtrl, int wiiCtrl)
  * Scans pad and wpad
  ***************************************************************************/
 
+#ifdef HW_RVL
 static bool retrodeConnected = false;
 static s32 deviceIdRetrode = 0;
 static u8 endpointRetrode = 0;
@@ -330,6 +331,7 @@ void openRetrode()
 		}
 	}
 }
+#endif
 
 void
 UpdatePads()
@@ -339,22 +341,13 @@ UpdatePads()
 	WPAD_ScanPads();
 	#endif
 
-	// Retrode
+	#ifdef HW_RVL
 	if(!retrodeConnected)
 	{
 		openRetrode();
 		retrodeConnected = true;
 	}
-	//	else
-	//	{
-	//		u16 buttonsHeld = WPAD_ButtonsHeld(0);
-	//		if(buttonsHeld & WPAD_BUTTON_1  && buttonsHeld & WPAD_BUTTON_2)
-	//		{
-	//		}
-	//		if(buttonsHeld & WPAD_BUTTON_MINUS  && buttonsHeld & WPAD_BUTTON_PLUS)
-	//		{
-	//		}
-	//	}
+	#endif
 
 	PAD_ScanPads();
 
@@ -554,6 +547,7 @@ static void decodepad (int chan)
 	u32 wiidrcp = userInput[chan].wiidrcdata.btns_h;
 #endif
 
+#ifdef HW_RVL
 	// Retrode
 	if (retrodeConnected && chan == 0)
 	{
@@ -595,6 +589,7 @@ static void decodepad (int chan)
 	{
 		jp |= jpRetrode[chan]; // restore previous value
 	}
+#endif
 
 	/***
 	Gamecube Joystick input
