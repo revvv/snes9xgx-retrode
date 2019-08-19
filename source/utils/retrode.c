@@ -31,6 +31,11 @@ static u8 getEndpoint(usb_devdesc devdesc)
 
 static void openRetrode()
 {
+    if (USB_Initialize() < 0)
+    {
+        return;
+    }
+
 	usb_device_entry dev_entry[8];
 	u8 dev_count;
 	if (USB_GetDeviceList(dev_entry, 8, USB_CLASS_HID, &dev_count) < 0)
@@ -57,13 +62,14 @@ static void openRetrode()
 		endpointRetrode = getEndpoint(devdesc);
 		bMaxPacketSizeRetrode = devdesc.bMaxPacketSize0;
 	}
+
+    retrodeSetup = true;
 }
 
 void Retrode_ScanPads()
 {
 	if(!retrodeSetup)
 	{
-		retrodeSetup = true;
 		openRetrode();
 	}
 
@@ -119,9 +125,9 @@ u32 Retrode_ButtonsHeld(int chan)
 	return jpRetrode[chan];
 }
 
-s32 getEndpointRetrode()
+s32 Retrode_Endpoint()
 {
-    return deviceIdRetrode;
+    return endpointRetrode;
 }
 
 #endif
