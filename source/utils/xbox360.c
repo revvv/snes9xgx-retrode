@@ -26,7 +26,7 @@ static u8 getEndpoint(usb_devdesc devdesc)
 
 static bool isXBOX360(usb_devdesc devdesc)
 {
-    return (devdesc.idVendor == 0x045e && devdesc.idProduct == 0x028e && getEndpoint(devdesc) == 0x81);
+    return (devdesc.idVendor == 0x045e && devdesc.idProduct == 0x028e && getEndpoint(devdesc) == endpointXBOX360_IN);
 }
 
 static int read_XBOX360(s32 device_id, u8 endpoint, u8 bMaxPacketSize0);
@@ -90,15 +90,14 @@ static int read_XBOX360_cb(int res, void *usrdata)
 
         jp |= ((buf[3] & 0x10) == 0x10) ? PAD_BUTTON_B : 0; // XBOX360 A button maps to B
         jp |= ((buf[3] & 0x20) == 0x20) ? PAD_BUTTON_A : 0; // XBOX360 B button maps to A
-        jp |= ((buf[3] & 0x40) == 0x40) ? PAD_BUTTON_X : 0;
-        jp |= ((buf[3] & 0x80) == 0x80) ? PAD_BUTTON_Y : 0;
+        jp |= ((buf[3] & 0x40) == 0x40) ? PAD_BUTTON_Y : 0; // XBOX360 X button maps to Y
+        jp |= ((buf[3] & 0x80) == 0x80) ? PAD_BUTTON_X : 0; // XBOX360 Y button maps to X
 
         jp |= ((buf[3] & 0x01) == 0x01) ? PAD_TRIGGER_L : 0;
         jp |= ((buf[3] & 0x02) == 0x02) ? PAD_TRIGGER_R : 0;
 
         jp |= ((buf[2] & 0x10) == 0x10) ? PAD_BUTTON_START : 0;
         jp |= ((buf[2] & 0x20) == 0x20) ? PAD_TRIGGER_Z    : 0; // XBOX360 back button maps to Z
-
 
         // triggers
         jp |= (buf[4] > 128) ? PAD_TRIGGER_L : 0;
@@ -119,8 +118,6 @@ static int read_XBOX360_cb(int res, void *usrdata)
         jp |= (ry < -16384) ? PAD_BUTTON_DOWN  : 0;
         jp |= (rx < -16384) ? PAD_BUTTON_LEFT  : 0;
         jp |= (rx >  16384) ? PAD_BUTTON_RIGHT : 0;
-
-        jp |= ((buf[3] & 0x04) == 0x04) ? PAD_BUTTON_MENU : 0 ;
     }
 
     // read again
