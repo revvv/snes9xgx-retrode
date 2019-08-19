@@ -119,4 +119,9 @@ u32 Retrode_ButtonsHeld(int chan)
 	return jpRetrode[chan];
 }
 
+s32 getEndpointRetrode()
+{
+    return deviceIdRetrode;
+}
+
 #endif
