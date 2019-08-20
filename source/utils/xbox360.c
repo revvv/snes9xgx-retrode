@@ -13,6 +13,8 @@ static u8 bConfigurationValueXBOX360 = 1;
 static u8 ATTRIBUTE_ALIGN(32) buf[20];
 static bool xbox360_read = false;
 static u32 jp;
+static int player = 0;
+static bool nextPlayer = false;
 
 static u8 getEndpoint(usb_devdesc devdesc)
 {
@@ -118,6 +120,12 @@ static int read_XBOX360_cb(int res, void *usrdata)
         jp |= (ry < -16384) ? PAD_BUTTON_DOWN  : 0;
         jp |= (rx < -16384) ? PAD_BUTTON_LEFT  : 0;
         jp |= (rx >  16384) ? PAD_BUTTON_RIGHT : 0;
+
+        if ((buf[3] & 0x04) == 0x04)
+        {
+            // XBOX button to switch to next player
+            nextPlayer = true;
+        }
     }
 
     // read again
@@ -137,6 +145,19 @@ static void turnOnLED1(s32 device_id)
 {
     // stop flashing LEDs, turn on LED1
     u8 ATTRIBUTE_ALIGN(32) buf[] = { 0x01, 0x03, 0x06 };
+    USB_WriteIntrMsg(deviceIdXBOX360, endpointXBOX360_OUT, sizeof(buf), buf);
+}
+
+static void increasePlayer()
+{
+    player++;
+    if (player > 3)
+    {
+        player = 0;
+    }
+
+    // turn on player's LED
+    uint8_t ATTRIBUTE_ALIGN(32) buf[] = { 0x01, 0x03, 0x06 + player };
     USB_WriteIntrMsg(deviceIdXBOX360, endpointXBOX360_OUT, sizeof(buf), buf);
 }
 
@@ -171,6 +192,7 @@ static void openXBOX360()
         usb_devdesc devdesc;
         if (USB_GetDescriptors(fd, &devdesc) < 0)
         {
+            // You have to replug the XBOX360 controller!
             USB_CloseDevice(&fd);
             continue;
         }
@@ -206,7 +228,16 @@ void XBOX360_ScanPads()
 
 u32 XBOX360_ButtonsHeld(int chan)
 {
-	if (deviceIdXBOX360 == 0 || chan != 0)
+    if (deviceIdXBOX360 == 0)
+    {
+        return 0;
+    }
+    if (nextPlayer)
+    {
+        nextPlayer = false;
+        increasePlayer();
+    }
+	if (chan != player)
 	{
 		return 0;
 	}
@@ -215,6 +246,7 @@ u32 XBOX360_ButtonsHeld(int chan)
 
 s32 XBOX360_Endpoint()
 {
+    openXBOX360();
     return deviceIdXBOX360 ? endpointXBOX360_IN : 0;
 }
 
