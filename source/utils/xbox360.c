@@ -141,10 +141,9 @@ static int read_XBOX360(s32 device_id, u8 endpoint, u8 bMaxPacketSize0)
     return USB_ReadIntrMsgAsync(device_id, endpoint, sizeof(buf), buf, &read_XBOX360_cb, NULL);
 }
 
-static void turnOnLED1(s32 device_id)
+static void turnOnLED()
 {
-    // stop flashing LEDs, turn on LED1
-    u8 ATTRIBUTE_ALIGN(32) buf[] = { 0x01, 0x03, 0x06 };
+    uint8_t ATTRIBUTE_ALIGN(32) buf[] = { 0x01, 0x03, 0x06 + player };
     USB_WriteIntrMsg(deviceIdXBOX360, endpointXBOX360_OUT, sizeof(buf), buf);
 }
 
@@ -155,10 +154,7 @@ static void increasePlayer()
     {
         player = 0;
     }
-
-    // turn on player's LED
-    uint8_t ATTRIBUTE_ALIGN(32) buf[] = { 0x01, 0x03, 0x06 + player };
-    USB_WriteIntrMsg(deviceIdXBOX360, endpointXBOX360_OUT, sizeof(buf), buf);
+    turnOnLED();
 }
 
 void rumble_XBOX360(s32 device_id, u8 left, u8 right)
@@ -200,7 +196,7 @@ static void openXBOX360()
         if (isXBOX360(devdesc) && USB_SetConfiguration(fd, bConfigurationValueXBOX360) >= 0)
         {
             deviceIdXBOX360 = fd;
-            turnOnLED1(deviceIdXBOX360);
+            turnOnLED();
         }
         else
         {
