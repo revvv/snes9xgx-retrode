@@ -127,6 +127,7 @@ u32 Retrode_ButtonsHeld(int chan)
 
 s32 Retrode_Endpoint()
 {
+    openRetrode();
     return endpointRetrode;
 }
 
