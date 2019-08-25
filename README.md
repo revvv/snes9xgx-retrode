@@ -7,16 +7,17 @@ Play your original SNES cartridges on your Wii using your original SNES controll
 * Tested with various games: Super Mario World, Yoshi's Island, Streetfighter 2, Mortal Kombat, Doom, Wolfenstein, Super Bomberman...
 * Connect your Retrode 2, then launch my apps. To make sure the Retrode 2 was correctly detected in Snes9x GX click on the logo. See screenshot below.
 
-**XBOX360 controller** is now supported! (XBOX360 wired version: VID=0x045e, PID=0x028e)
-
-_Maybe I should have chosen another project name ;-)_ 
+**XBOX360 controller** is now supported! (XBOX360 wired version only: VID=0x045e, PID=0x028e)
+* If your controller does not show up on credits screen, please replug it.
+* Do not unplug your controller once it is detected!
 
 ### Notes
-* Original SNES Mouse not supported. (I don't have one, but if you give me the RetrodeTest output I could add it...)
+* Original SNES Mouse is not supported. (I don't have one, but if you give me the RetrodeTest output I could add it...)
 * I also maintain the [RetroArchWiiRetrode](https://github.com/revvv/RetroArchWiiRetrode/) fork.
 
 #### Download
-* [snes9xgx-retrode-xbox360-0.3.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.3/snes9xgx-retrode-xbox360-0.3.zip)
+* [snes9xgx-retrode-xbox360-0.3.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.3/snes9xgx-retrode-xbox360-0.3.zip) **This build does not support USB drives!**
+* [snes9xgx-retrode-0.2.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.2/snes9xgx-retrode-0.2.zip)
 * [RetrodeTest-0.1.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.1/RetrodeTest-0.1.zip) 
 
 ![Screenshot](snes9xgx-screenshot.png "Snes9x GX with Retrode connected")
