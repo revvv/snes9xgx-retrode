@@ -38,6 +38,7 @@
 #ifdef HW_RVL
 #include "utils/retrode.h"
 #include "utils/xbox360.h"
+#include "utils/hornet.h"
 #endif
 
 #define ANALOG_SENSITIVITY 30
@@ -337,6 +338,7 @@ UpdatePads()
 	WiiDRC_ScanPads();
 	Retrode_ScanPads();
 	XBOX360_ScanPads();
+	Hornet_ScanPads();
 	WPAD_ScanPads();
 	#endif
 
@@ -539,6 +541,7 @@ static void decodepad (int chan)
 
 	jp |= Retrode_ButtonsHeld(chan);
 	jp |= XBOX360_ButtonsHeld(chan);
+	jp |= Hornet_ButtonsHeld(chan);
 #endif
 
 	/***
@@ -904,5 +907,6 @@ char* GetUSBControllerInfo()
 {
     static char info[50];
     snprintf(info, 50, "Retrode: %s, XBOX360: %s", Retrode_Status(), XBOX360_Status());
+    Hornet_Status(); // Hornet support as undocumented feature ;-)
     return info;
 }

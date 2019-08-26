@@ -21,10 +21,11 @@
 
 ### Notes
 * Original SNES Mouse is not supported. (I don't have one, but if you give me the RetrodeTest output I could add it...)
+* Latest version also supports my _Speedlink Hornet USB Gamepad_: VID=0079, PID=0011. Various manufacturers use the same IDs, but with different button layouts. 
 * I also maintain the [RetroArchWiiRetrode](https://github.com/revvv/RetroArchWiiRetrode/) fork.
 
 #### Download
-* [snes9xgx-retrode-xbox360-0.4.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.4/snes9xgx-retrode-xbox360-0.4.zip)
+* [snes9xgx-retrode-xbox360-0.5.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.5/snes9xgx-retrode-xbox360-0.5.zip)
 * [RetrodeTest-0.1.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.1/RetrodeTest-0.1.zip) 
 
 ![Screenshot](snes9xgx-screenshot.png "Snes9x GX Credits screen")
