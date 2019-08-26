@@ -2,6 +2,7 @@
 #include <gccore.h>
 
 static bool retrodeSetup = false;
+static bool replugRequired = false;
 static s32 deviceIdRetrode = 0;
 static u8 endpointRetrode = 0;
 static u8 bMaxPacketSizeRetrode = 0;
@@ -29,9 +30,19 @@ static u8 getEndpoint(usb_devdesc devdesc)
 	return devdesc.configurations->interfaces->endpoints->bEndpointAddress;
 }
 
+static int removal_cb(int result, void *usrdata)
+{
+    s32 fd = (s32) usrdata;
+    if (fd == deviceIdRetrode)
+    {
+        deviceIdRetrode = 0;
+    }
+    return 1;
+}
+
 static void openRetrode()
 {
-    if (USB_Initialize() < 0)
+    if (deviceIdRetrode != 0)
     {
         return;
     }
@@ -55,12 +66,16 @@ static void openRetrode()
 		usb_devdesc devdesc;
 		if (USB_GetDescriptors(fd, &devdesc) < 0 || !isRetrodeGamepad(devdesc))
 		{
+		    // You have to replug the Retrode controller!
+		    replugRequired = true;
 			USB_CloseDevice(&fd);
 			continue;
 		}
 		deviceIdRetrode = fd;
+		replugRequired = false;
 		endpointRetrode = getEndpoint(devdesc);
 		bMaxPacketSizeRetrode = devdesc.bMaxPacketSize0;
+		USB_DeviceRemovalNotifyAsync(fd, &removal_cb, (void*) fd);
 	}
 
     retrodeSetup = true;
@@ -125,10 +140,12 @@ u32 Retrode_ButtonsHeld(int chan)
 	return jpRetrode[chan];
 }
 
-s32 Retrode_Endpoint()
+char* Retrode_Status()
 {
     openRetrode();
-    return endpointRetrode;
+    if (replugRequired)
+        return "please replug";
+    return deviceIdRetrode ? "connected" : "not found";
 }
 
 #endif

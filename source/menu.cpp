@@ -819,7 +819,7 @@ static void WindowCredits(void * ptr)
 	txt[i]->SetAlignment(ALIGN_CENTRE, ALIGN_TOP); txt[i]->SetPosition(0,y); i++; y+=32;
 
 	//txt[i] = new GuiText("Official Site: https://github.com/dborth/snes9xgx", 20, (GXColor){0, 0, 0, 255});
-	txt[i] = new GuiText("Snes9x GX: Retrode 2 support by REHvolution", 20, (GXColor){0, 0, 0, 255});
+	txt[i] = new GuiText("Retrode 2 / XBOX360 support by REHvolution", 20, (GXColor){0, 0, 0, 255});
 	txt[i]->SetAlignment(ALIGN_CENTRE, ALIGN_TOP); txt[i]->SetPosition(0,y); i++; y+=40;
 
 	GuiText::SetPresets(20, (GXColor){0, 0, 0, 255}, 0, FTGX_JUSTIFY_LEFT | FTGX_ALIGN_TOP, ALIGN_LEFT, ALIGN_TOP);
@@ -874,7 +874,7 @@ static void WindowCredits(void * ptr)
 
 #ifdef HW_RVL
 	//sprintf(iosVersion, "IOS: %ld", IOS_GetVersion());
-	snprintf(iosVersion, 70, "IOS: %ld / Retrode: %s", IOS_GetVersion(), GetRetrodeInfo());
+	snprintf(iosVersion, 70, "IOS: %ld / %s", IOS_GetVersion(), GetUSBControllerInfo());
 #endif
 
 	txt[i] = new GuiText(iosVersion, 18, (GXColor){0, 0, 0, 255});
