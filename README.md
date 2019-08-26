@@ -24,7 +24,7 @@
 * I also maintain the [RetroArchWiiRetrode](https://github.com/revvv/RetroArchWiiRetrode/) fork.
 
 #### Download
-* [snes9xgx-retrode-xbox360-0.4.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.3/snes9xgx-retrode-xbox360-0.4.zip)
+* [snes9xgx-retrode-xbox360-0.4.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.4/snes9xgx-retrode-xbox360-0.4.zip)
 * [RetrodeTest-0.1.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.1/RetrodeTest-0.1.zip) 
 
 ![Screenshot](snes9xgx-screenshot.png "Snes9x GX Credits screen")
