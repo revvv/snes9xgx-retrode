@@ -26,7 +26,7 @@
 
 #### Download
 * [snes9xgx-retrode-xbox360-0.5.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.5/snes9xgx-retrode-xbox360-0.5.zip)
-* [RetrodeTest-0.1.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.1/RetrodeTest-0.1.zip) 
+* [RetrodeTest-0.2.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.5/RetrodeTest-0.2.zip) 
 
 ![Screenshot](snes9xgx-screenshot.png "Snes9x GX Credits screen")
 
