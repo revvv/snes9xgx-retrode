@@ -73,10 +73,12 @@ static void open()
             USB_DeviceRemovalNotifyAsync(fd, &removal_cb, (void*) fd);
             break;
 		}
+		/* quick fix: this would close the Retrode :-(
 		else
 		{
 		    USB_CloseDevice(&fd);
 		}
+		*/
 	}
 
     setup = true;
