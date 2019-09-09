@@ -10,14 +10,13 @@
 
 ### XBOX360 controller ### 
 * Only XBOX360 **wired version** is supported (VID=0x045e, PID=0x028e)
-* **NOTE:** You cannot use USB drives and an XBOX360 controller at the same time! Don't try it: Snes9x GX will freeze!
 * Currently only one XBOX360 controller is supported.
 * You can switch players by pressing the XBOX button. The LED shows which player is selected. _On some controllers the LED always flashes, so it's hard to know which player you have selected..._
 
 ### HOWTO ###
-* Connect your Retrode 2 or XBOX360 controller, then start Snes9x GX.
+* Connect your Retrode 2, the XBOX360 controller and your USB drives, then start Snes9x GX.
 * To make sure the controller was correctly detected click on the logo, which opens the credits screen. See screenshot below.
-* Do not unplug your controller once it is detected!
+* Do not unplug your USB controllers or USB drives after startup!
 
 ### Notes
 * Original SNES Mouse is not supported. (I don't have one, but if you give me the RetrodeTest output I could add it...)
