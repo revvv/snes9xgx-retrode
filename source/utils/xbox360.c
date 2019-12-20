@@ -8,7 +8,7 @@ static bool setup = false;
 static bool replugRequired = false;
 static s32 deviceId = 0;
 static u8 endpoint_in = 0x81;
-static u8 endpoint_out = 0x01;
+static u8 endpoint_out = 0x01; // some controllers require 0x02 for LED and rumble (maybe use always last endpoint, just like RetroArch)
 static u8 bMaxPacketSize = 20;
 static u8 bConfigurationValue = 1;
 static u8 ATTRIBUTE_ALIGN(32) buf[20];
