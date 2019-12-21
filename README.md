@@ -6,12 +6,13 @@
 * The [Retrode 2](http://www.retrode.org) cartridge reader offers USB mass storage access for your SNES cartridges. This works out of the box on the Wii!
 * With my driver you can also use your SNES gamepads on your Wii!
 * Support for 4 players!
-* Tested with various games: Super Mario World, Yoshi's Island, Streetfighter 2, Mortal Kombat, Doom, Wolfenstein, Super Bomberman...
+* Tested with various games: Super Mario World, Yoshi's Island, Streetfighter 2, Mortal Kombat, Doom, Wolfenstein, Super Bomberman, Contra 3...
 
 ### XBOX360 controller ### 
 * Only XBOX360 **wired version** is supported (VID=0x045e, PID=0x028e)
+* To enable XBOX controller: Settings -> Menu
 * Currently only one XBOX360 controller is supported.
-* You can switch players by pressing the XBOX button. The LED shows which player is selected. _On some controllers the LED always flashes, so it's hard to know which player you have selected..._
+* You can switch players by pressing the XBOX button. The LED shows which player is selected.  
 
 ### HOWTO ###
 * Connect your Retrode 2, the XBOX360 controller and your USB drives, then start Snes9x GX.
@@ -24,7 +25,7 @@
 * I also maintain the [RetroArchWiiRetrode](https://github.com/revvv/RetroArchWiiRetrode/) fork.
 
 #### Download
-* [snes9xgx-retrode-xbox360-0.6.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.6/snes9xgx-retrode-xbox360-0.6.zip)
+* [snes9xgx-retrode-xbox360-0.7.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.7/snes9xgx-retrode-xbox360-0.7.zip)
 * [RetrodeTest-0.2.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.5/RetrodeTest-0.2.zip) 
 
 ![Screenshot](snes9xgx-screenshot.png "Snes9x GX Credits screen")
