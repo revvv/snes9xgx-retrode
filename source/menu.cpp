@@ -3924,6 +3924,7 @@ static int MenuSettingsMenu()
 	sprintf(options.name[i++], "Rumble");
 	sprintf(options.name[i++], "Language");
 	sprintf(options.name[i++], "Preview Image");
+	sprintf(options.name[i++], "XBOX 360 controller");
 	options.length = i;
 
 	for(i=0; i < options.length; i++)
@@ -4012,6 +4013,19 @@ static int MenuSettingsMenu()
 				if(GCSettings.PreviewImage > 2)
 					GCSettings.PreviewImage = 0;
 				break;
+            case 7:
+                GCSettings.XBox ^= 1;
+                if (GCSettings.XBox == 1)
+                {
+                    sprintf (options.value[7], "Enabled");
+                    static char info[200];
+                    snprintf(info, 200, "XBOX360 controller enabled. "
+                                        "NOTE: Do NOT use USB mass storage devices! "
+                                        "Please enable again after restart. "
+                                        "Check status in about dialog: %s", GetUSBControllerInfo());
+                    InfoPrompt(info);
+                }
+                break;
 		}
 
 		if(ret >= 0 || firstRun)
@@ -4039,6 +4053,7 @@ static int MenuSettingsMenu()
 			options.name[2][0] = 0; // Music
 			options.name[3][0] = 0; // Sound Effects
 			options.name[4][0] = 0; // Rumble
+			options.name[7][0] = 0; // XBox
 			#endif
 
 			if (GCSettings.WiimoteOrientation == 0)
@@ -4092,6 +4107,11 @@ static int MenuSettingsMenu()
 					break; 
 			}
 			
+            if (GCSettings.XBox == 1)
+                sprintf (options.value[7], "Enabled");
+            else
+                sprintf (options.value[7], "Disabled");
+
 			optionBrowser.TriggerUpdate();
 		}
 

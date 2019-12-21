@@ -117,6 +117,7 @@ struct SGCSettings{
 	int		Rumble;
 	int		language;
 	int		PreviewImage;
+	int     XBox;
 
 	int		sfxOverclock;
 	

@@ -337,8 +337,11 @@ UpdatePads()
 	#ifdef HW_RVL
 	WiiDRC_ScanPads();
 	Retrode_ScanPads();
-	XBOX360_ScanPads();
-	Hornet_ScanPads();
+    if (GCSettings.XBox)
+    {
+        XBOX360_ScanPads();
+    }
+    Hornet_ScanPads();
 	WPAD_ScanPads();
 	#endif
 
@@ -540,7 +543,10 @@ static void decodepad (int chan)
 	u32 wiidrcp = userInput[chan].wiidrcdata.btns_h;
 
 	jp |= Retrode_ButtonsHeld(chan);
-	jp |= XBOX360_ButtonsHeld(chan);
+    if (GCSettings.XBox)
+    {
+        jp |= XBOX360_ButtonsHeld(chan);
+    }
 	jp |= Hornet_ButtonsHeld(chan);
 #endif
 
@@ -906,7 +912,14 @@ void SetDefaultButtonMap ()
 char* GetUSBControllerInfo()
 {
     static char info[50];
-    snprintf(info, 50, "Retrode: %s, XBOX360: %s", Retrode_Status(), XBOX360_Status());
+    if (GCSettings.XBox)
+    {
+        snprintf(info, 50, "Retrode: %s, XBOX360: %s", Retrode_Status(), XBOX360_Status());
+    }
+    else
+    {
+        snprintf(info, 50, "Retrode: %s, XBOX360: disabled", Retrode_Status());
+    }
     Hornet_Status(); // Hornet support as undocumented feature ;-)
     return info;
 }
