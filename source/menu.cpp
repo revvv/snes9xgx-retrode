@@ -4022,7 +4022,7 @@ static int MenuSettingsMenu()
                     snprintf(info, 200, "XBOX360 controller enabled. "
                                         "NOTE: Do NOT use USB mass storage devices! "
                                         "Please enable again after restart. "
-                                        "Check status in about dialog: %s", GetUSBControllerInfo());
+                                        "Check status in credits dialog: %s", GetUSBControllerInfo());
                     InfoPrompt(info);
                 }
                 break;
