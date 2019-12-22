@@ -4017,7 +4017,6 @@ static int MenuSettingsMenu()
                 GCSettings.XBox ^= 1;
                 if (GCSettings.XBox == 1)
                 {
-                    sprintf (options.value[7], "Enabled");
                     static char info[200];
                     snprintf(info, 200, "XBOX360 controller enabled. "
                                         "NOTE: Do NOT use USB mass storage devices! "
