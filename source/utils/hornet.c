@@ -1,6 +1,9 @@
 #ifdef HW_RVL
 #include <gccore.h>
 
+#define HORNET_VID 0x0079
+#define HORNET_PID 0x0011
+
 static bool setup = false;
 static bool replugRequired = false;
 static s32 deviceId = 0;
@@ -8,9 +11,9 @@ static u8 endpoint = 0;
 static u8 bMaxPacketSize = 0;
 static u32 jp;
 
-bool isHornetGamepad(usb_devdesc devdesc)
+static bool isHornetGamepad(usb_device_entry dev)
 {
-    return (devdesc.idVendor == 0x0079 && devdesc.idProduct == 0x0011);
+    return dev.vid == HORNET_VID && dev.pid == HORNET_PID;
 }
 
 static u8 getEndpoint(usb_devdesc devdesc)
@@ -49,6 +52,10 @@ static void open()
 
 	for (int i = 0; i < dev_count; ++i)
 	{
+	    if (!isHornetGamepad(dev_entry[i]))
+	    {
+	        continue;
+	    }
 		s32 fd;
 		if (USB_OpenDevice(dev_entry[i].device_id, dev_entry[i].vid, dev_entry[i].pid, &fd) < 0)
 		{
@@ -64,21 +71,12 @@ static void open()
 			break;
 		}
 
-		if (isHornetGamepad(devdesc))
-		{
-            deviceId = fd;
-            replugRequired = false;
-            endpoint = getEndpoint(devdesc);
-            bMaxPacketSize = devdesc.bMaxPacketSize0;
-            USB_DeviceRemovalNotifyAsync(fd, &removal_cb, (void*) fd);
-            break;
-		}
-		/* quick fix: this would close the Retrode :-(
-		else
-		{
-		    USB_CloseDevice(&fd);
-		}
-		*/
+        deviceId = fd;
+        replugRequired = false;
+        endpoint = getEndpoint(devdesc);
+        bMaxPacketSize = devdesc.bMaxPacketSize0;
+        USB_DeviceRemovalNotifyAsync(fd, &removal_cb, (void*) fd);
+        break;
 	}
 
     setup = true;

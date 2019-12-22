@@ -1,6 +1,9 @@
 #ifdef HW_RVL
 #include <gccore.h>
 
+#define RETRODE_VID 0x0403
+#define RETRODE_PID 0x97C1
+
 static bool setup = false;
 static bool replugRequired = false;
 static s32 deviceId = 0;
@@ -9,9 +12,14 @@ static u8 bMaxPacketSize = 0;
 
 static u32 jpRetrode[4];
 
+static bool isRetrode(usb_device_entry dev)
+{
+    return dev.vid == RETRODE_VID && dev.pid == RETRODE_PID;
+}
+
 static bool isRetrodeGamepad(usb_devdesc devdesc)
 {
-	if (devdesc.idVendor != 0x0403 || devdesc.idProduct != 0x97C1 ||
+	if (devdesc.idVendor != RETRODE_VID || devdesc.idProduct != RETRODE_PID ||
 		devdesc.configurations == NULL || devdesc.configurations->interfaces == NULL ||
 		devdesc.configurations->interfaces->endpoints == NULL)
 	{
@@ -57,6 +65,10 @@ static void open()
 	// Retrode has two entries in USB_GetDeviceList(), one for gamepads and one for SNES mouse
 	for (int i = 0; i < dev_count; ++i)
 	{
+	    if (!isRetrode(dev_entry[i]))
+	    {
+	        continue;
+	    }
 		s32 fd;
 		if (USB_OpenDevice(dev_entry[i].device_id, dev_entry[i].vid, dev_entry[i].pid, &fd) < 0)
 		{
