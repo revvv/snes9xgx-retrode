@@ -909,6 +909,7 @@ void SetDefaultButtonMap ()
 	SetControllers();
 }
 
+#ifdef HW_RVL
 char* GetUSBControllerInfo()
 {
     static char info[50];
@@ -923,3 +924,4 @@ char* GetUSBControllerInfo()
     Hornet_Status(); // Hornet support as undocumented feature ;-)
     return info;
 }
+#endif

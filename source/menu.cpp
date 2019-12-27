@@ -4013,18 +4013,20 @@ static int MenuSettingsMenu()
 				if(GCSettings.PreviewImage > 2)
 					GCSettings.PreviewImage = 0;
 				break;
+
+			#ifdef HW_RVL
             case 7:
                 GCSettings.XBox ^= 1;
                 if (GCSettings.XBox == 1)
                 {
                     static char info[200];
                     snprintf(info, 200, "XBOX360 controller enabled. "
-                                        "NOTE: Do NOT use USB mass storage devices! "
                                         "Please enable again after restart. "
                                         "Check status in credits dialog: %s", GetUSBControllerInfo());
                     InfoPrompt(info);
                 }
                 break;
+            #endif
 		}
 
 		if(ret >= 0 || firstRun)
