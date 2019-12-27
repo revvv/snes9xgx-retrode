@@ -19,8 +19,8 @@
 #include "filter.h"
 #include "filelist.h"
 
-#define APPNAME 			"Snes9x GX"
-#define APPVERSION 			"4.4.3 Retrode/XBOX360 0.5"
+#define APPNAME 			"Snes9x GX Retrode"
+#define APPVERSION 			"Snes9x GX Retrode 0.9" // based on Snes9x GX 4.4.4 + latest 2019-12-27
 #define APPFOLDER 			"snes9xgx"
 #define PREF_FILE_NAME		"settings.xml"
 
@@ -29,7 +29,7 @@
 #define SILENT 1
 
 const char pathPrefix[9][8] =
-{ "", "sd:/", "usb:/", "dvd:/", "smb:/", "carda:/", "cardb:/" };
+{ "", "sd:/", "usb:/", "dvd:/", "smb:/", "carda:/", "cardb:/", "port2:/" };
 
 enum {
 	DEVICE_AUTO,
@@ -38,7 +38,8 @@ enum {
 	DEVICE_DVD,
 	DEVICE_SMB,
 	DEVICE_SD_SLOTA,
-	DEVICE_SD_SLOTB
+	DEVICE_SD_SLOTB,
+	DEVICE_SD_PORT2
 };
 
 enum {
