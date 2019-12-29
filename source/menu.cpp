@@ -870,11 +870,11 @@ static void WindowCredits(void * ptr)
 	txt[i]->SetPosition(0,y); i++; y+=20;
 
 	//char iosVersion[20];
-	char iosVersion[70]; // added 50 for Retrode info
+	char iosVersion[90]; // added 70 for USB info
 
 #ifdef HW_RVL
 	//sprintf(iosVersion, "IOS: %ld", IOS_GetVersion());
-	snprintf(iosVersion, 70, "IOS: %ld / %s", IOS_GetVersion(), GetUSBControllerInfo());
+	snprintf(iosVersion, 90, "IOS: %ld / %s", IOS_GetVersion(), GetUSBControllerInfo());
 #endif
 
 	txt[i] = new GuiText(iosVersion, 18, (GXColor){0, 0, 0, 255});
@@ -3930,7 +3930,6 @@ static int MenuSettingsMenu()
 	sprintf(options.name[i++], "Rumble");
 	sprintf(options.name[i++], "Language");
 	sprintf(options.name[i++], "Preview Image");
-	sprintf(options.name[i++], "XBOX 360 controller");
 	options.length = i;
 
 	for(i=0; i < options.length; i++)
@@ -4019,20 +4018,6 @@ static int MenuSettingsMenu()
 				if(GCSettings.PreviewImage > 2)
 					GCSettings.PreviewImage = 0;
 				break;
-
-			#ifdef HW_RVL
-            case 7:
-                GCSettings.XBox ^= 1;
-                if (GCSettings.XBox == 1)
-                {
-                    static char info[200];
-                    snprintf(info, 200, "XBOX360 controller enabled. "
-                                        "Please enable again after restart. "
-                                        "Check status in credits dialog: %s", GetUSBControllerInfo());
-                    InfoPrompt(info);
-                }
-                break;
-            #endif
 		}
 
 		if(ret >= 0 || firstRun)
@@ -4060,7 +4045,6 @@ static int MenuSettingsMenu()
 			options.name[2][0] = 0; // Music
 			options.name[3][0] = 0; // Sound Effects
 			options.name[4][0] = 0; // Rumble
-			options.name[7][0] = 0; // XBox
 			#endif
 
 			if (GCSettings.WiimoteOrientation == 0)
@@ -4113,11 +4097,6 @@ static int MenuSettingsMenu()
 					sprintf(options.value[6], "Artwork");
 					break; 
 			}
-			
-            if (GCSettings.XBox == 1)
-                sprintf (options.value[7], "Enabled");
-            else
-                sprintf (options.value[7], "Disabled");
 
 			optionBrowser.TriggerUpdate();
 		}

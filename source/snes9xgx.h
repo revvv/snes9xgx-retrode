@@ -20,7 +20,7 @@
 #include "filelist.h"
 
 #define APPNAME 			"Snes9x GX Retrode"
-#define APPVERSION 			"0.9" // based on Snes9x GX 4.4.4 + latest 2019-12-27
+#define APPVERSION 			"0.9"
 #define APPFOLDER 			"snes9xgx"
 #define PREF_FILE_NAME		"settings.xml"
 
@@ -118,7 +118,6 @@ struct SGCSettings{
 	int		Rumble;
 	int		language;
 	int		PreviewImage;
-	int     XBox;
 
 	int		sfxOverclock;
 	
