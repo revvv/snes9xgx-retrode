@@ -1,4 +1,4 @@
-### Snes9x GX with Retrode and XBOX360 controller support
+### Snes9x GX with support for Retrode, XBOX360 and Speedlink Hornet USB controllers
 
 
 ### Retrode 2 ###
@@ -10,22 +10,25 @@
 
 ### XBOX360 controller ### 
 * Only XBOX360 **wired version** is supported (VID=0x045e, PID=0x028e)
-* To enable XBOX controller: Settings -> Menu
 * Currently only one XBOX360 controller is supported.
 * You can switch players by pressing the XBOX button. The LED shows which player is selected.  
 
+### Speedlink Hornet ###
+* Speedlink Hornet USB Gamepad is supported (VID=0079, PID=0011)
+* Various manufacturers use the same ID, but with different button layouts. 
+
 ### HOWTO ###
-* Connect your Retrode 2, the XBOX360 controller and your USB drives, then start Snes9x GX.
+* Connect your USB controllers and your USB drives, then start _Snes9x GX Retrode_.
 * To make sure the controller was correctly detected click on the logo, which opens the credits screen. See screenshot below.
 * Do not unplug your USB controllers or USB drives after startup!
 
 ### Notes
 * Original SNES Mouse is not supported. (I don't have one, but if you give me the RetrodeTest output I could add it...)
-* Latest version also supports my _Speedlink Hornet USB Gamepad_: VID=0079, PID=0011. Various manufacturers use the same IDs, but with different button layouts. 
 * I also maintain the [RetroArchWiiRetrode](https://github.com/revvv/RetroArchWiiRetrode/) fork.
+* [Snes9xRX](https://github.com/niuus/Snes9xRX) also includes my Retrode/XBOX drivers. Thanks _niuus_!
 
 #### Download
-* [snes9xgx-retrode-xbox360-0.8.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.8/snes9xgx-retrode-xbox360-0.8.zip)
+* [snes9xgx-retrode-xbox360-0.9.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.9/snes9xgx-retrode-xbox360-0.9.zip)
 * [RetrodeTest-0.2.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.5/RetrodeTest-0.2.zip) 
 
 ![Screenshot](snes9xgx-screenshot.png "Snes9x GX Credits screen")
