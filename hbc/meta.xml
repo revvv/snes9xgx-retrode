@@ -2,11 +2,11 @@
 <app version="1">
   <name>Snes9x GX Retrode</name>
   <coder>REHvolution</coder>
-  <version>0.9</version>
-  <release_date>20191227</release_date>
-  <short_description>Super Nintendo Emulator with Retrode/XBOX360 support</short_description> 
+  <version>0.9.1</version>
+  <release_date>20191231</release_date>
+  <short_description>Super Nintendo Emulator with Retrode/XBOX360/Hornet support</short_description> 
   <long_description>
-Snes9x GX with Retrode/XBOX360 support.
+Snes9x GX with Retrode/XBOX360/Hornet support.
 
 To make sure the controller was correctly detected click on the logo, which opens the credits screen.
 

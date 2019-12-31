@@ -28,7 +28,7 @@
 * [Snes9xRX](https://github.com/niuus/Snes9xRX) also includes my Retrode/XBOX drivers. Thanks _niuus_!
 
 #### Download
-* [snes9xgx-retrode-xbox360-0.9.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.9/snes9xgx-retrode-xbox360-0.9.zip)
+* [snes9xgx-retrode-0.9.1.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.9.1/snes9xgx-retrode-0.9.1.zip)
 * [RetrodeTest-0.2.zip](https://github.com/revvv/snes9xgx-retrode/releases/download/0.5/RetrodeTest-0.2.zip) 
 
 ![Screenshot](snes9xgx-screenshot.png "Snes9x GX Credits screen")
