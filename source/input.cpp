@@ -337,8 +337,8 @@ UpdatePads()
 	#ifdef HW_RVL
 	WiiDRC_ScanPads();
 	Retrode_ScanPads();
-    XBOX360_ScanPads();
-    Hornet_ScanPads();
+	XBOX360_ScanPads();
+	Hornet_ScanPads();
 	WPAD_ScanPads();
 	#endif
 
